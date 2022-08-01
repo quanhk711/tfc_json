@@ -21,13 +21,13 @@
         "${var.region}b"
       ],
       "cidr_block": "10.1.0.0/16",
-      "cidr_block_subnet": [
-        "10.1.1.0/24",
-        "10.1.2.0/24"
-      ],
       "cidr_private_subnet": [
         "10.1.10.0/24",
         "10.1.11.0/24"
+      ],
+      "cidr_publish_subnet": [
+        "10.1.1.0/24",
+        "10.1.2.0/24"
       ],
       "common_tags": {
         "Environment": "${terraform.workspace}",
