@@ -32,8 +32,8 @@
       "common_tags": {
         "Environment": "${terraform.workspace}",
         "ManagedBy": "Terraform",
-        "Owner": "${var.contact}",
-        "Project": "${var.project}"
+        "Owner": "quan_vip",
+        "Project": "tfc_json"
       },
       "nat_gateway_enabled": false,
       "prefix": "hands_on",
