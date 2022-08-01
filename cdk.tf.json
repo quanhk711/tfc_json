@@ -1,0 +1,73 @@
+{
+  "//": {
+    "metadata": {
+      "backend": "remote",
+      "stackName": "terraform_cdk",
+      "version": "0.12.0"
+    },
+    "outputs": {
+    }
+  },
+  "module": {
+    "vpc": {
+      "//": {
+        "metadata": {
+          "path": "terraform_cdk/vpc",
+          "uniqueId": "vpc"
+        }
+      },
+      "availability_zone": [
+        "${var.region}a",
+        "${var.region}b"
+      ],
+      "cidr_block": "10.1.0.0/16",
+      "cidr_block_subnet": [
+        "10.1.1.0/24",
+        "10.1.2.0/24"
+      ],
+      "cidr_private_subnet": [
+        "10.1.10.0/24",
+        "10.1.11.0/24"
+      ],
+      "common_tags": {
+        "Environment": "${terraform.workspace}",
+        "ManagedBy": "Terraform",
+        "Owner": "${var.contact}",
+        "Project": "${var.project}"
+      },
+      "nat_gateway_enabled": false,
+      "prefix": "hands_on",
+      "source": "git::https://github.com/devopsifyco/terraform_module_template.git//module_aws_vpc"
+    }
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "${var.region}"
+      }
+    ]
+  },
+  "terraform": {
+    "backend": {
+      "remote": {
+        "hostname": "app.terraform.io",
+        "organization": "quannhm",
+        "workspaces": {
+          "name": "hello_cdktf"
+        }
+      }
+    },
+    "required_providers": {
+      "aws": {
+        "source": "aws",
+        "version": "4.24.0"
+      }
+    }
+  },
+  "variable": {
+    "region": {
+      "description": "region of env",
+      "type": "string"
+    }
+  }
+}
